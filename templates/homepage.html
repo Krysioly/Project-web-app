@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+Journal
+{% endblock %}
+
+
+{% block body %}
+<div>
+    <h1>Daily Journal</h1>
+    <p><img src="static/img/book-heart.jpg" style="width:700px;height:500px;"></p>
+</div>
+<div>
+    <h2>LINKS</h2>
+    <p>New member? <a href="/register">Register</a></p>
+    <p>Already a member? <a href="/login">Login/Logout</a></p>
+    <p>Current day <a href="/dashboard">Dashboard</a></p>
+    <!-- <p>Search older entries <a href="/calendar">Calendar</a></p> -->
+    <p>Older <a href="/entry">Entry</a></p>
+</div>
+
+
+
+
+{% endblock %}

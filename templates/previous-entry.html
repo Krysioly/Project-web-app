@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+
+
+<div>
+    <h1>Previous entries</h1>
+</div>
+<div>
+    <img src="static/img/book-stack.jpg" style="width:700px;height:500px;">
+</div>
+<div>
+    <form>
+        {% for entry in entries %}
+            <p><b>DATE:</b>{{ entry.date }}<br>
+            <b>TITLE:</b>{{ entry.title }}<br>
+            <b>ENTRY</b>{{ entry.text }}</p>
+            <br>
+            <br>
+        {% endfor %}
+    </form>
+</div>
+
+
+
+{% endblock %}

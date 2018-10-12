@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %} 
+
+{% endblock %}
+
+
+{% block body %}
+
+<div>
+    <h1>Dashboard Page</h1>
+    <img src="static/img/rainbow-stack-books.png">
+</div>
+<div>
+    Want to see your <a href="/entry">Previous Entries</a>
+</div>
+<div>
+    <h2>Daily Quote</h2>
+    <p>  {{ quote }}  </p>
+    <h2>Weather</h2>
+    <img src="{{ img_src }}" id="weather-icon">
+    <p>Weather description: {{ weathers["description"] }}<br>
+    Weather tempurature: {{ weathers["temp"] }}F<br>
+    Temperature Minimum: {{ weathers["temp_min"] }}F<br>
+    Tempurature Maximum: {{ weathers["temp_max"] }}F
+    </p>
+</div>
+<br>
+<h3><div id="finishedTitle"></div></h3>
+<div id="finishedText"></div>
+<div id= "entry-div">
+    <h2>Write in journal:</h2>
+    <form action= "/post-entry" method="POST" id= "entry-form">
+        <input type="text" id="title" placeholder="Your title"><br>
+        <br>
+        How is my day going?<br>
+        <textarea id="base-text" rows="5" cols="40" placeholder="My day is going..."></textarea><br>
+        <input type="submit" id = "publish" value="Publish">
+    </form>
+</div> 
+<div>
+    <h2>To-Do List</h2>
+    <ul id ="todoList">
+    {% for todo in todo_list %}
+        <li id ="{{todo.todo}}">{{ todo.todo }} <i class="fas fa-check-circle"></i></li>
+    {% endfor %}
+    </ul>
+</div>
+<div>
+    <form id="todoForm">
+        Tasks to do:<br>
+        <input type="text" id="todo" placeholder="I have to..."><br>
+        <input type="submit" id = "update" value="Update">
+    </form>
+</div>
+
+
+
+
+<script>
+let publish = $('#publish'); //submit button id
+let enrtyDiv = $('#entry-div'); //div with form id
+
+function changeDiv(results) {
+    console.log(results);
+    console.log(results['title']);
+    console.log(results['text']);
+    $('#finishedTitle').html(results['title']);
+    $('#finishedText').html(results['text']);
+    $('#entry-div').hide();
+}
+
+function updateDiv(evt) {
+    evt.preventDefault();
+
+    let entryInput = {
+        "title" : $('#title').val(),
+        "text" : $('#base-text').val(),
+    };
+    
+    $.post("/post-entry", entryInput ,changeDiv);
+}
+
+publish.on('click', updateDiv);
+/////////////////////////////////////////
+
+let todoList = $('#todoList'); //ul id
+let update = $('#update'); //submit id
+
+function appendTodo(results) {
+    console.log(results);
+    $('#todoList').append("<li>"+results+"</li>");
+}
+
+function updateTodo(evt) {
+    evt.preventDefault();
+
+    let todoInput = {
+        "todo" : $('#todo').val(),
+    };
+    
+    $.post("/update-todo", todoInput ,appendTodo);
+    document.forms["todoForm"].reset();;
+}
+
+update.on('click', updateTodo);
+/////////////////////////////////////////////////
+
+// Get the element, add a click listener...
+$("#todoList").on("click", function(e) {
+    // e.target is the clicked element!
+    // If it was a list item
+    if(e.target && e.target.nodeName == "LI") {
+        // List item found!  Output the ID!
+        console.log("List item ", e.target.id.replace("post-", ""), " was clicked!");
+        e.target.remove();
+        let todoItemdict = { "todoItem" : e.target.id}
+        $.post("/delete-todo", todoItemdict, console.log("working"));
+    }
+});
+
+</script>
+{% endblock %}

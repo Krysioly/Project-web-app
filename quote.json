@@ -1,0 +1,26 @@
+
+ {
+    "success": {
+        "total": 1
+    },
+    "contents": {
+        "quotes": [
+            {
+                "quote": "Be daring, be different, be impractical, be anything that will assert integrity of purpose and imaginative vision against the playitsafers, the creatures of the commonplace, the slaves of the ordinary.",
+                "length": "201",
+                "author": "Cecil Beaton",
+                "tags": [
+                    "inspire"
+                ],
+                "category": "inspire",
+                "date": "2018-10-08",
+                "permalink": "https://theysaidso.com/quote/fFVOORfFvnr1bt5mNNhZtQeF/15328-cecil-beaton-be-daring-be-different-be-impractical-be-anything-that-will-assert",
+                "title": "Inspiring Quote of the day",
+                "background": "https://theysaidso.com/img/bgs/man_on_the_mountain.jpg",
+                "id": "fFVOORfFvnr1bt5mNNhZtQeF"
+            }
+        ],
+        "copyright": "2017-19 theysaidso.com"
+    }
+}
+
