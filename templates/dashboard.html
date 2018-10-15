@@ -19,10 +19,12 @@
     <p>  {{ quote }}  </p>
     <h2>Weather</h2>
     <img src="{{ img_src }}" id="weather-icon">
-    <p>Weather description: {{ weathers["description"] }}<br>
-    Weather tempurature: {{ weathers["temp"] }}F<br>
-    Temperature Minimum: {{ weathers["temp_min"] }}F<br>
-    Tempurature Maximum: {{ weathers["temp_max"] }}F
+    <p><b>Weather: </b><br>
+    {{ weathers["description"] }}<br>
+    <b>Tempurature: </b><br>
+    Current: {{ weathers["temp"] }}F<br>
+    High: {{ weathers["temp_min"] }}F<br>
+    Low: {{ weathers["temp_max"] }}F
     </p>
 </div>
 <br>
@@ -42,7 +44,7 @@
     <h2>To-Do List</h2>
     <ul id ="todoList">
     {% for todo in todo_list %}
-        <li id ="{{todo.todo}}">{{ todo.todo }} <i class="fas fa-check-circle"></i></li>
+        <li id ="{{todo.todo}}">{{ todo.todo }} </li>
     {% endfor %}
     </ul>
 </div>
@@ -100,7 +102,7 @@ function updateTodo(evt) {
     };
     
     $.post("/update-todo", todoInput ,appendTodo);
-    document.forms["todoForm"].reset();;
+    document.forms["todoForm"].reset();
 }
 
 update.on('click', updateTodo);
@@ -114,7 +116,7 @@ $("#todoList").on("click", function(e) {
         // List item found!  Output the ID!
         console.log("List item ", e.target.id.replace("post-", ""), " was clicked!");
         e.target.remove();
-        let todoItemdict = { "todoItem" : e.target.id}
+        let todoItemdict = { "todoItem" : e.target.id};
         $.post("/delete-todo", todoItemdict, console.log("working"));
     }
 });

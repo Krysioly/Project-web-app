@@ -4,15 +4,19 @@ from jinja2 import StrictUndefined
 from flask import (Flask, render_template, redirect, request, flash, session, jsonify)
 from flask_debugtoolbar import DebugToolbarExtension
 import requests, json, datetime, calendar 
-
+# from pyowm import OWM
+import os
 from model import connect_to_db, db, User, Entry, Todo
 
 app = Flask(__name__)
 
 app.secret_key = "password"
-
 app.jinja_env.undefined = StrictUndefined
 
+weather_key = os.environ['weather_key']
+# owm = OWM(weather_key)
+# from pyowm.caches.lrucache import LRUCache
+# cache = LRUCache()
 
 ############# ROUTES ######################
 @app.route('/')
@@ -153,7 +157,7 @@ def update_todo():
 @app.route("/delete-todo", methods=["POST"])
 def delete_todo():
     delete = request.form.get("todoItem")
-
+    print("\n\n",delete,"\n\n")
     done_todo = Todo.query.filter_by(todo=delete).first()
     db.session.delete(done_todo)
     db.session.commit()
@@ -168,9 +172,6 @@ def show_calendar():
     # c = calendar.HTMLCalendar(calendar.SUNDAY)
     # str = c.formatmonth(2018, 10)
     # print(str)
-
-
-
     return render_template("calendar.html")#, calendar = str)
 
 
@@ -179,7 +180,6 @@ def show_previous_entry():
     """Show dashboard page"""
     if session.get("email"):    
         finduser = User.query.filter_by(email=session["email"]).first()
-        print("\n\n",finduser,"\n\n")
         entries = Entry.query.filter_by(user_id=finduser.user_id).all()
 
         return render_template("previous-entry.html", entries = entries)
@@ -205,12 +205,13 @@ def get_quote():
 def get_weather():
     """ weather api """
 
-    # user = User.query.filter_by(email=session["email"]).first()
-    # weather = requests.get("api.openweathermap.org/data/2.5/weather?zip=" + user.zipcode)
-    # weather_info = weather.text
+    user = User.query.filter_by(email=session["email"]).first()
+    
+    # weather = requests.get("http://api.openweathermap.org/data/2.5/weather?zip=" + user.zipcode+"&APPID="+weather_key)
+    # weather_json = weather.text
     weather_json = open("weather.json").read()
-    weather_info = json.loads(weather_json)
 
+    weather_info = json.loads(weather_json)
     weather_desc = weather_info["weather"][0]["description"]
 
     temp = weather_info["main"]["temp"]
@@ -224,6 +225,9 @@ def get_weather():
     #make into dictionary
     weather_dictionary = {"description" : weather_desc, "temp":weather_temp,
         "temp_min": weather_temp_min, "temp_max": weather_temp_max}
+
+
+
 
     return weather_dictionary
 
