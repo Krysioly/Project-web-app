@@ -1,7 +1,7 @@
 {"coord":{"lon":-122.09,"lat":37.39},
     "weather":[
         {"id":500,"main":"Rain",
-        "description":"lightening","icon":"10d"}],
+        "description":"sunny","icon":"10d"}],
         "base":"stations","main":{
         "temp":280.44,"pressure":1017,"humidity":61,
         "temp_min":279.15,"temp_max":281.15},

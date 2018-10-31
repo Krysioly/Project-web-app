@@ -1,65 +1,192 @@
 {% extends "base.html" %}
 
 {% block title %} 
-
+Dashboard
 {% endblock %}
-
 
 {% block body %}
 
-<div>
-    <h1>Dashboard Page</h1>
-    <img src="static/img/rainbow-stack-books.png">
-</div>
-<div>
-    Want to see your <a href="/entry">Previous Entries</a>
-</div>
-<div>
-    <h2>Daily Quote</h2>
-    <p>  {{ quote }}  </p>
-    <h2>Weather</h2>
-    <img src="{{ img_src }}" id="weather-icon">
-    <p><b>Weather: </b><br>
-    {{ weathers["description"] }}<br>
-    <b>Tempurature: </b><br>
-    Current: {{ weathers["temp"] }}F<br>
-    High: {{ weathers["temp_min"] }}F<br>
-    Low: {{ weathers["temp_max"] }}F
-    </p>
+<div class="center">
+    <h1>{{user.name}}'s Dashboard</h1>
 </div>
 <br>
-<h3><div id="finishedTitle"></div></h3>
-<div id="finishedText"></div>
-<div id= "entry-div">
-    <h2>Write in journal:</h2>
-    <form action= "/post-entry" method="POST" id= "entry-form">
-        <input type="text" id="title" placeholder="Your title"><br>
-        <br>
-        How is my day going?<br>
-        <textarea id="base-text" rows="5" cols="40" placeholder="My day is going..."></textarea><br>
-        <input type="submit" id = "publish" value="Publish">
-    </form>
-</div> 
-<div>
-    <h2>To-Do List</h2>
-    <ul id ="todoList">
-    {% for todo in todo_list %}
-        <li id ="{{todo.todo}}">{{ todo.todo }} </li>
-    {% endfor %}
-    </ul>
+
+<!-- Calendar -->
+<div class="container center">
+    <div class="row">
+        <div class="col-3">
+            <!-- Quote -->
+            <div class="card text-white mb-3" style="background-color: #330033; max-width: 18rem;">
+                <div class="card-header"><h4>Daily Quote</h4></div>
+                <div class="card-body">
+                    <p class="card-text">{{ quote }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <img src="static/img/rainbow-stack-books.png">
+        </div>
+        
+        <div class="col-3">
+            <!-- Todo List -->
+            <div class="center">
+                <h2>To-Do List</h2>
+                <ul id ="todoList">
+                {% for todo in todo_list %}
+                    <li id ="{{todo.todo}}">{{ todo.todo }} </li>
+                {% endfor %}
+                </ul>
+                <form id="todoForm">
+                    <i class="fas fa-tasks"></i>
+                    <input type="text" id="todo" placeholder="I have to..."><br>
+                    <input type="submit" id = "update" value="Update" class="btn btn-dark" style="background-color: #330033;">
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <form id="todoForm">
-        Tasks to do:<br>
-        <input type="text" id="todo" placeholder="I have to..."><br>
-        <input type="submit" id = "update" value="Update">
-    </form>
+<br>
+<div class="container center">
+    <div class="row">
+
+        <div class="col-3">
+            <!-- Weather -->
+            <div class="card border-info mb-3" style="max-width: 18rem;">
+                <div class="card-header text-info"><h4>Weather</h4></div>
+                <div class="card-body text-info">
+                    <h5 class="card-title">{{ weathers["main"] }}</h5>
+                    <img src="{{ img_src }}" id="weather-icon">
+                    <p class="card-text"><b>Tempurature:</b><br>
+                    Current: {{ weathers["temp"] }}F<br>
+                    High: {{ weathers["temp_min"] }}F<br>
+                    Low: {{ weathers["temp_max"] }}F</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 center">
+            <!-- Entry -->
+            <br>
+            <h3><div id="finishedTitle"></div></h3>
+            <div id="finishedText"></div>
+            <div id= "entry-div">
+                <h2>Write in journal: <i class="far fa-edit"></i></h2>
+                <form method="POST" id= "entry-form">
+                    <input type="text" id="title" placeholder="Your title"><br>
+                    <textarea id="text" rows="5" cols="40" placeholder="My day is going..."></textarea><br>
+                    <input type="submit" id = "publish" value="Publish" class="btn btn-dark" style="background-color: #330033;">
+                </form>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div id="calendar" >{{ calendar | safe}}</div>
+            <br>
+            <!-- News -->
+            <div class="center">
+            <h2>News <i class="far fa-newspaper"></i></h2>
+            <form action="/search-keyword"><input type="text" id="keyword" placeholder="Search Keyword"><br><input type="submit" id="searchkey" value="News" class="btn btn-dark" style="background-color: #330033"></form>
+            <p id="news"></p>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>Stocks <i class="fas fa-file-invoice"></i></h2>
+            <form action="/search-stocks" id="stocksform">
+                <input type="text" id="symbol" placeholder="Search Stock's Symbol" required="True" ><br>
+                <input type="radio" name="time" value="1d" required="True">1 Day 
+                <input type="radio" name="time" value="1m">1 Month 
+                <input type="radio" name="time" value="3m">3 Month 
+                <input type="radio" name="time" value="1y">1 Year <br>
+                <input type="submit" id="stocksubmit" value="Stocks" class="btn btn-dark" style="background-color: #330033">
+            </form>
+            <div>
+                <canvas id="stockschart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <!-- chart -->
+            <div class="center"><h2><i class="fas fa-book-open"></i> / <i class="fas fa-calendar-alt"></i></h2>
+                <canvas id="barChart"></canvas>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 
 
 <script>
+
+
+
+/////////////////////////////////////////////////
+const options = {
+    responsive: true,
+    scales: {
+        xAxes: [{
+            ticks: {
+                beginAtZero: true
+            }}]}};
+
+let ctx_bar = $("#barChart").get(0).getContext("2d");
+$.get("/entry-data.json", function (data) {
+            let myBarChart = new Chart(ctx_bar, {
+                            type: 'horizontalBar',
+                            data: data,
+                            options: options
+                            });
+// $('#barLegend').html(myBarChart.generateLegend());
+});
+// ////////////////////////////////////////////////
+function print_stocks(results) {
+    let ctx_line = $("#stockschart").get(0).getContext("2d");
+
+    
+        let myLineChart = new Chart(ctx_line, {
+                                    type: 'line',
+                                    data: results,
+                                    options: options
+                                });
+    };
+
+function search_stocks(evt) {
+    evt.preventDefault();
+
+    let stocksSearch = {'time' : $('input[name=time]:checked', '#stocksform').val(), 'symbol' : $('#symbol').val()};
+    console.log(stocksSearch);
+    $.post('/search-stocks', stocksSearch, print_stocks);
+};
+
+$("#stocksubmit").on('click', search_stocks);
+
+
+
+
+
+
+// function make_stock_chart() {
+//     let ctx_line = $("#stockschart").get(0).getContext("2d");
+
+//     $.get("/stocks-chart.json", function (data) {
+//         let myLineChart = new Chart(ctx, {
+//                                     type: 'line',
+//                                     data: data,
+//                                     options: options
+//                                 });
+//         // $("#lineLegend").html(myLineChart.generateLegend());
+//     });};
+// $('#stocksubmit').on('click', make_stock_chart);
+
+/////////////////////////////////////////////////
 let publish = $('#publish'); //submit button id
 let enrtyDiv = $('#entry-div'); //div with form id
 
@@ -67,7 +194,7 @@ function changeDiv(results) {
     console.log(results);
     console.log(results['title']);
     console.log(results['text']);
-    $('#finishedTitle').html(results['title']);
+    $('#finishedTitle').append(results['title']);
     $('#finishedText').html(results['text']);
     $('#entry-div').hide();
 }
@@ -77,8 +204,11 @@ function updateDiv(evt) {
 
     let entryInput = {
         "title" : $('#title').val(),
-        "text" : $('#base-text').val(),
+        "text" : $('#text').val(),
+        "weather" : "{{ weathers['main'] }}",
+        "quote" : "{{ quote }}",
     };
+    console.log(entryInput);
     
     $.post("/post-entry", entryInput ,changeDiv);
 }
@@ -117,9 +247,42 @@ $("#todoList").on("click", function(e) {
         console.log("List item ", e.target.id.replace("post-", ""), " was clicked!");
         e.target.remove();
         let todoItemdict = { "todoItem" : e.target.id};
-        $.post("/delete-todo", todoItemdict, console.log("working"));
-    }
-});
+        $.post("/delete-todo", todoItemdict, console.log("working"));}
+    });
+
+/////////////////////////////////////////////////////////////
+
+function changeNewsKey(results) {
+    console.log("results", results);
+    console.log("results[articles]",results.articles);
+    console.log(results.articles[0]);
+
+    for ( let obj of results.articles) {
+        console.log("title", obj.title);
+        console.log('description',obj.description);
+        $('#news').append('<b>'+obj.title+'</b><br>');
+        $('#news').append('<img src="'+obj.urlToImage+'" height="200" width="300"><br>');
+        $('#news').append(obj.description,'<br>');
+        $('#news').append('<a href="">Read more...</a><br>');
+        $('#news').attr("href", obj.url);
+        $('#news').append('<br>')
+    };       
+}
+
+function updateNewsKey(evt) {
+    evt.preventDefault();
+
+    let searchKey = { 'keyword' : $('#keyword').val()};
+    console.log(searchKey);
+    
+    $.get("/search-keyword", searchKey, changeNewsKey);
+}
+
+$('#searchkey').on('click', updateNewsKey);
+//////////////////////////////////////////////////////
+
+
 
 </script>
+
 {% endblock %}

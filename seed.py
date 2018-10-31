@@ -24,6 +24,7 @@ def load_users():
         user_id, name, email, password, zipcode = row.split("|")
 
         user = User(user_id = user_id,
+                    name = name,
                     email = email,
                     password = password,
                     zipcode = zipcode)
@@ -42,12 +43,14 @@ def load_entries():
     for row in open("seed_data/entries.item"):
 
         row = row.rstrip()
-        date, user_id, title, text = row.split("|")
+        date, user_id, title, text, quote, weather = row.split("|")
 
         entry = Entry(date = date,
                     user_id = user_id,
                     title = title,
-                    text = text)
+                    text = text,
+                    quote = quote,
+                    weather = weather)
 
         db.session.add(entry)
 
@@ -100,6 +103,18 @@ def set_val_todo_id():
     db.session.commit()
 
 
+def set_val_entry_id():
+    """Set value for the next user_id after seeding database"""
+
+    # Get the Max user_id in the database
+    result = db.session.query(func.max(Entry.entry_id)).one()
+    max_id = int(result[0])
+
+    # Set the value for the next user_id to be max_id + 1
+    query = "SELECT setval('entries_entry_id_seq', :new_id)"
+    db.session.execute(query, {'new_id': max_id + 1})
+    db.session.commit()
+
 
 
 if __name__ == "__main__":
@@ -114,3 +129,4 @@ if __name__ == "__main__":
     load_todos()
     set_val_user_id()
     set_val_todo_id()
+    set_val_entry_id()

@@ -1,0 +1,13 @@
+ {"status": "ok", "totalResults": 96405, "articles": [
+    {"source": {"id": "the-new-york-times", "name": "The New York Times"},
+    "author": "THE EDITORIAL BOARD", "title": "Women Are Watching",
+    "description": "Which should make Republican lawmakers very, very nervous.",
+    "url": "https://www.nytimes.com/2018/09/28/opinion/brett-kavanaugh-jeff-flake-gop-women.html",
+    "urlToImage": "https://static01.nyt.com/images/2018/09/28/opinion/28cottleprint/28cottleWeb-facebookJumbo.jpg",
+    "publishedAt": "2018-09-29T01:43:27Z", "content": "To their credit, Republican lawmakers have said all along that they were going to do this, with Mr. Flake the first to demand a different path. When the accusations against the nominee surfaced, prominent senators like Orrin Hatch and Lindsey Graham rushed to… [+3152 chars]"}, 
+    {"source": {"id": "wired", "name": "Wired"}, "author": "Nitasha Tiku", 
+    "title": "ACLU Says Facebook Ads Let Employers Favor Men Over Women", 
+    "description": "Charge filed with the EEOC says employers can discriminate by targeting ads at men and excluding women.", 
+    "url": "https://www.wired.com/story/aclu-says-facebook-ads-let-employers-favor-men-over-women/", 
+    "urlToImage": "https://media.wired.com/photos/5ba04314ab6e142d95f93db2/191:100/pass/FB-Ad-Discrimination.jpg", 
+    "publishedAt": "2018-09-18T13:00:00Z", "content": "In recent years, Facebook has faced lawsuits, media exposés, and even federal charges alleging that its ad-targeting tools help advertisers discriminate based on age or race for jobs, housing, and credit. Now, the American Civil Liberties Union claims Faceboo… [+4259 chars]"}]}
