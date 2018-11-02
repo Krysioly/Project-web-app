@@ -25,7 +25,7 @@ Dashboard
         </div>
 
         <div class="col-6">
-            <img src="static/img/rainbow-stack-books.png">
+            <img src="static/img/journal.jpg">
         </div>
         
         <div class="col-3">
@@ -79,32 +79,38 @@ Dashboard
                 </form>
             </div>
         </div>
-
         <div class="col-3">
             <div id="calendar" >{{ calendar | safe}}</div>
             <br>
-            <!-- News -->
-            <div class="center">
-            <h2>News <i class="far fa-newspaper"></i></h2>
-            <form action="/search-keyword"><input type="text" id="keyword" placeholder="Search Keyword"><br><input type="submit" id="searchkey" value="News" class="btn btn-dark" style="background-color: #330033"></form>
-            <p id="news"></p>
         </div>
     </div>
 </div>
 <br>
 <div class="container">
     <div class="row">
-        <div class="col-12">
+        <div class="col-6">
+            <!-- News -->
+            <h2>News <i class="far fa-newspaper"></i></h2>
+            <form action="/search-keyword"><input type="text" id="keyword" placeholder="Search Keyword"><br><input type="submit" id="searchkey" value="News" class="btn btn-dark" style="background-color: #330033">
+            </form>
+            <p id="news"></p>
+        </div>
+        <div class="col-6">
             <h2>Stocks <i class="fas fa-file-invoice"></i></h2>
             <form action="/search-stocks" id="stocksform">
-                <input type="text" id="symbol" placeholder="Search Stock's Symbol" required="True" ><br>
-                <input type="radio" name="time" value="1d" required="True">1 Day 
+                <input type="text" id="symbol" placeholder="Search Stock's Symbol" required ><br>
+                <input type="radio" name="time" value="1d" required >1 Day 
                 <input type="radio" name="time" value="1m">1 Month 
                 <input type="radio" name="time" value="3m">3 Month 
                 <input type="radio" name="time" value="1y">1 Year <br>
                 <input type="submit" id="stocksubmit" value="Stocks" class="btn btn-dark" style="background-color: #330033">
             </form>
             <div>
+                <span id="stockssymbol"></span>
+                <span id="stockscompany"></span>
+                <span id="stocksdescription"></span>
+                <span id="stocksexchange"></span>
+                <span id="stockswebsite"></span>
                 <canvas id="stockschart"></canvas>
             </div>
         </div>
@@ -125,18 +131,15 @@ Dashboard
 
 
 <script>
-
-
-
-/////////////////////////////////////////////////
+///////////////////////// Entry Bar Chart //////////////////////////////
 const options = {
     responsive: true,
     scales: {
         xAxes: [{
             ticks: {
                 beginAtZero: true
-            }}]}};
-
+            }}]}
+};
 let ctx_bar = $("#barChart").get(0).getContext("2d");
 $.get("/entry-data.json", function (data) {
             let myBarChart = new Chart(ctx_bar, {
@@ -144,122 +147,73 @@ $.get("/entry-data.json", function (data) {
                             data: data,
                             options: options
                             });
-// $('#barLegend').html(myBarChart.generateLegend());
 });
-// ////////////////////////////////////////////////
+////////////////////// Stocks Chart and Info ////////////////////////////
 function print_stocks(results) {
+    $('#stockssymbol').append("<b>Symbol: </b>",results['info']['Symbol'],"<br>");
+    $('#stockscompany').append("<b>Company: </b>",results['info']['Company'],"<br>");
+    $('#stocksdescription').append("<b>Description: </b>",results['info']['Description'],"<br>");
+    $('#stocksexchange').append("<b>Exchange: </b>",results['info']['Exchange'],"<br>");
+    $('#stockswebsite').append("<b>Website: </b>",results['info']['Website'],"<br>");
     let ctx_line = $("#stockschart").get(0).getContext("2d");
 
-    
-        let myLineChart = new Chart(ctx_line, {
+    let myLineChart = new Chart(ctx_line, {
                                     type: 'line',
                                     data: results,
                                     options: options
                                 });
-    };
-
+};
 function search_stocks(evt) {
     evt.preventDefault();
-
     let stocksSearch = {'time' : $('input[name=time]:checked', '#stocksform').val(), 'symbol' : $('#symbol').val()};
-    console.log(stocksSearch);
     $.post('/search-stocks', stocksSearch, print_stocks);
 };
-
 $("#stocksubmit").on('click', search_stocks);
-
-
-
-
-
-
-// function make_stock_chart() {
-//     let ctx_line = $("#stockschart").get(0).getContext("2d");
-
-//     $.get("/stocks-chart.json", function (data) {
-//         let myLineChart = new Chart(ctx, {
-//                                     type: 'line',
-//                                     data: data,
-//                                     options: options
-//                                 });
-//         // $("#lineLegend").html(myLineChart.generateLegend());
-//     });};
-// $('#stocksubmit').on('click', make_stock_chart);
-
-/////////////////////////////////////////////////
+////////////////////// Posting and Saving Journal Entry ////////////////////////////
 let publish = $('#publish'); //submit button id
 let enrtyDiv = $('#entry-div'); //div with form id
-
 function changeDiv(results) {
-    console.log(results);
-    console.log(results['title']);
-    console.log(results['text']);
     $('#finishedTitle').append(results['title']);
     $('#finishedText').html(results['text']);
     $('#entry-div').hide();
-}
-
+};
 function updateDiv(evt) {
     evt.preventDefault();
-
     let entryInput = {
         "title" : $('#title').val(),
         "text" : $('#text').val(),
         "weather" : "{{ weathers['main'] }}",
         "quote" : "{{ quote }}",
-    };
-    console.log(entryInput);
-    
+    };  
     $.post("/post-entry", entryInput ,changeDiv);
-}
-
+};
 publish.on('click', updateDiv);
-/////////////////////////////////////////
-
+///////////////////////// To Do List /////////////////////////////////
 let todoList = $('#todoList'); //ul id
 let update = $('#update'); //submit id
-
 function appendTodo(results) {
-    console.log(results);
     $('#todoList').append("<li>"+results+"</li>");
-}
-
+};
 function updateTodo(evt) {
     evt.preventDefault();
-
     let todoInput = {
         "todo" : $('#todo').val(),
     };
-    
     $.post("/update-todo", todoInput ,appendTodo);
     document.forms["todoForm"].reset();
-}
-
+};
 update.on('click', updateTodo);
-/////////////////////////////////////////////////
-
-// Get the element, add a click listener...
+//////////////////// Event Listener on To Do List /////////////////////////
 $("#todoList").on("click", function(e) {
-    // e.target is the clicked element!
-    // If it was a list item
     if(e.target && e.target.nodeName == "LI") {
-        // List item found!  Output the ID!
         console.log("List item ", e.target.id.replace("post-", ""), " was clicked!");
         e.target.remove();
         let todoItemdict = { "todoItem" : e.target.id};
         $.post("/delete-todo", todoItemdict, console.log("working"));}
     });
-
-/////////////////////////////////////////////////////////////
-
+////////////////////// News Search and Post ///////////////////////////////
 function changeNewsKey(results) {
-    console.log("results", results);
-    console.log("results[articles]",results.articles);
-    console.log(results.articles[0]);
-
     for ( let obj of results.articles) {
-        console.log("title", obj.title);
-        console.log('description',obj.description);
         $('#news').append('<b>'+obj.title+'</b><br>');
         $('#news').append('<img src="'+obj.urlToImage+'" height="200" width="300"><br>');
         $('#news').append(obj.description,'<br>');
@@ -267,22 +221,14 @@ function changeNewsKey(results) {
         $('#news').attr("href", obj.url);
         $('#news').append('<br>')
     };       
-}
-
+};
 function updateNewsKey(evt) {
     evt.preventDefault();
-
     let searchKey = { 'keyword' : $('#keyword').val()};
-    console.log(searchKey);
-    
     $.get("/search-keyword", searchKey, changeNewsKey);
-}
-
+};
 $('#searchkey').on('click', updateNewsKey);
 //////////////////////////////////////////////////////
-
-
-
 </script>
 
 {% endblock %}

@@ -6,6 +6,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from newsapi import NewsApiClient
 from model import connect_to_db, db, User, Entry, Todo
 import requests, json, datetime, calendar, os
+import hashlib
 
 app = Flask(__name__)
 
@@ -21,13 +22,14 @@ newsapi = NewsApiClient(api_key=news_key)
 
 @app.route('/')
 def index():
-    """Homepage."""
+    """Homepage"""
+
     return render_template("homepage.html")
 
 
 @app.route("/dashboard")
 def show_dashboard_form():
-    """Show dashboard with form"""
+    """Show dashboard (main page)"""
 
     if session.get("email"):
         calendar = make_calendar()
@@ -52,6 +54,7 @@ def show_dashboard_form():
 @app.route('/register')
 def register_user_form():
     """Make a new User"""
+
     return render_template("register_form.html")
 
 
@@ -61,15 +64,18 @@ def check_user_register():
 
     user_email = request.form.get('email')
     user_password = request.form.get('password')
+    login_password=login_password.encode()
+    hash_password = hashlib.sha256(login_password)
+    hash_password = hash_password.hexdigest()
+
     user_zipcode = request.form.get('zipcode')
 
     if User.query.filter_by(email = user_email).first() is None:
-        new_user = User(email=user_email, password=user_password, zipcode=user_zipcode)
+        new_user = User(email=user_email, password=hash_password, zipcode=user_zipcode)
         db.session.add(new_user)
         db.session.commit()
         flash('You were successfully registered')
         return redirect('/')
-
     else:
         flash('You are already a user, try logging in')
         return redirect('/login')
@@ -78,6 +84,7 @@ def check_user_register():
 @app.route('/login')
 def login_user_form():
     """Log user in"""
+
     return render_template('login_form.html')
 
 
@@ -87,14 +94,17 @@ def check_user_login():
 
     login_email = request.form.get('email')
     login_password = request.form.get('password')
+    login_password=login_password.encode()
+    hash_password = hashlib.sha256(login_password)
+    hash_password = hash_password.hexdigest()
     login_user = User.query.filter_by(email = login_email).first()
 
     if session.get('email') is None:
         if login_user:
-            if login_user.password == login_password:
+            if login_user.password == hash_password:
                 flash('You were successfully logged in')
+                print(hash_password)
                 session['email'] = login_email
-                session['password'] = login_password
                 return redirect('/dashboard')
             else:
                 flash('Your email does not match your password')
@@ -113,7 +123,6 @@ def logout_user():
 
     if session.get('email'):
         del session['email']
-        del session['password']
         flash('You were logged out')
         return redirect('/')
     else:
@@ -129,15 +138,10 @@ def submit_form():
 
     today = datetime.date.today()
     finduser = User.query.filter_by(email=session["email"]).first()
-
     title = request.form.get("title")
-    print("\n\n",title,"\n")
     text = request.form.get("text")
-    print("\n\n",text,"\n")
     weather = request.form.get("weather")
-    print("\n\n",weather,"\n")
     quote = request.form.get("quote")
-    print("\n\n",quote,"\n")
     
     new_entry = Entry(weather=weather, quote=quote, title=title,
         text=text, date=today, user_id=finduser.user_id)
@@ -149,10 +153,11 @@ def submit_form():
 
 @app.route("/entries")
 def show_previous_entry():
-    """Show dashboard page"""
+    """Show older entries page"""
 
     if session.get("email"):    
         finduser = User.query.filter_by(email=session["email"]).first()
+        print(finduser.password,"\n\n")
         entries = Entry.query.filter_by(user_id=finduser.user_id).order_by(Entry.date.desc()).all()
 
         return render_template("previous-entry.html", entries=entries, user=finduser)
@@ -163,11 +168,10 @@ def show_previous_entry():
 
 @app.route("/entry-data.json")
 def get_entry_data():
-    """Give data based on the database"""
+    """Chart data based on the database"""
 
     finduser = User.query.filter_by(email=session["email"]).first()
     entries = Entry.query.filter_by(user_id=finduser.user_id).order_by(Entry.date).all()
-    
     jan=0
     feb=0
     mar=0
@@ -206,7 +210,6 @@ def get_entry_data():
             nov+=1
         elif date.month == 12:
             dec+=1
-
     data_dict = { 
         "labels": [
             "January", "February", "March", "April",
@@ -237,7 +240,6 @@ def update_todo():
     new_todo = Todo(user_id= finduser.user_id, todo= todo)
     db.session.add(new_todo)
     db.session.commit()
-
     return todo
 
 
@@ -249,7 +251,6 @@ def delete_todo():
     done_todo = Todo.query.filter_by(todo=delete).first()
     db.session.delete(done_todo)
     db.session.commit()
-    
     return delete
 
 
@@ -257,15 +258,13 @@ def delete_todo():
 
 @app.route("/search-keyword")
 def search_keyword():
-    """search new articles by keyword"""
+    """search news articles by keyword"""
 
     newskeyword = request.args.get("keyword")
-    # all_articles = newsapi.get_everything(
-    #     q=newskeyword, sources=None, domains=None,
-    #     language='en', sort_by='relevancy')
-    news_json = open("newsapi.json").read()
-    all_articles = json.loads(news_json)
-    
+    all_articles = newsapi.get_everything(
+        q=newskeyword, sources=None, domains=None,
+        language='en', sort_by='relevancy')
+    print("\n\n", all_articles,"\n\n")
     return jsonify(all_articles)
 
 
@@ -275,65 +274,34 @@ def stocks_info():
 
     time = request.form.get('time')
     symbol = request.form.get('symbol')
-    print(time,symbol,"\n\n")
     stocksdata_info = requests.get('https://api.iextrading.com/1.0/stock/'+symbol+'/chart/'+time)
     stocksdata_json = stocksdata_info.json()
     stocks_info = requests.get("https://api.iextrading.com/1.0//stock/"+symbol+"/company")
     stocks_json = stocks_info.json()
-    print(stocksdata_json,"\n\n")
-    # stocks = {"time": time, "symbol": symbol, "data":stocksdata_json, "info":stocks_json}
-    # return jsonify(stocks)
     labels = []
     datas = []
     for stock in stocksdata_json:
-        print(stock)
-        labels.append(stock["label"]) 
-        datas.append(stock['close'])
-    print("\n\n",labels,datas)
+        labels.append(stock['label']) 
+        if 'close' not in stock:
+            pass
+        else:
+            datas.append(stock['close'])
     data_dict = { 
         "labels": labels,
         "datasets": [
-            {"label" : "stocks",
+            {"label" : stocks_json['symbol'],
             "data": datas,
-            "backgroundColor": ["#000000"]
             }
-        ]
+        ],
+        "info": {"Symbol": stocks_json['symbol'],"Company": stocks_json['companyName'],
+                "Description": stocks_json['description'], 
+                "Exchange": stocks_json['exchange'], "Website": stocks_json['website'],},
     }
     return jsonify(data_dict)
 
-# @app.route("/stocks-chart.json")
-# def stocks_chart():
-#     stocks = stocks_info()
-#     print(stocks)
-#     labels = []
-#     datas = []
-#     print("\n\n", stocks["data"])
-#     for stock in stocks["data"]:
-#         print(stock)
-#         labels.append(stock["label"]) 
-#         datas.append(stock["close"])
-#     print("\n\n",labels,datas)
-#     data_dict = { 
-#         "labels": labels,
-#         "datasets": [
-#             {"label" : "stocks",
-#             "data": datas,
-#             "backgroundColor": ["#000000"]
-#             }
-#         ]
-#     }
-#     return jsonify(data_dict)
-
-
-
-
-
-
-
-
-
 
 #################### Functions ##################################
+
 def make_calendar():
     """make a calendar"""
 
@@ -344,27 +312,23 @@ def make_calendar():
 
 
 def get_quote():
-    """ qoute api """
+    """get data for qoute api """
 
-    # responseQ = requests.get("http://quotes.rest/qod", {"Accept": "application/json"})
-    # quote_json = responseQ.text
-    quote_json = open("quote.json").read()
-    quote_info = json.loads(quote_json)
+    responseQ = requests.get("http://quotes.rest/qod", {"Accept": "application/json"})
+    quote_info = responseQ.json()
     quote = quote_info["contents"]["quotes"][0]["quote"]
 
     return quote
 
 
 def get_weather():
-    """ weather api """
+    """get data for weather api """
 
     user = User.query.filter_by(email=session["email"]).first()
     
-    # weather = requests.get("http://api.openweathermap.org/data/2.5/weather?zip=" + user.zipcode+"&APPID="+weather_key)
-    # weather_json = weather.text
-    weather_json = open("weather.json").read()
-
-    weather_info = json.loads(weather_json)
+    weather = requests.get("http://api.openweathermap.org/data/2.5/weather?zip=" + user.zipcode+"&APPID="+weather_key)
+    weather_info = weather.json()
+    
     weather_desc = weather_info["weather"][0]["main"]
     # change weather from kelvin to farenheight
     temp = weather_info["main"]["temp"]
@@ -374,10 +338,8 @@ def get_weather():
     temp_max = weather_info["main"]["temp_max"]
     weather_temp_max = round((1.8 * (temp_max - 273)) + 32)
 
-    #make into dictionary
     weather_dictionary = {"main" : weather_desc, "temp":weather_temp,
         "temp_min": weather_temp_min, "temp_max": weather_temp_max}
-
     return weather_dictionary
 
 
@@ -419,10 +381,8 @@ if __name__ == "__main__":
     app.debug = True
     # make sure templates, etc. are not cached in debug mode
     app.jinja_env.auto_reload = app.debug
-
-    connect_to_db(app, 'postgresql:///journals')
-
     # Use the DebugToolbar
     DebugToolbarExtension(app)
 
+    connect_to_db(app, 'postgresql:///journals')
     app.run(port=5000, host='0.0.0.0')

@@ -5,9 +5,7 @@
     <title>
         {% block title %} TITLE {% endblock %}
     </title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Load Bootstrap 4 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Load Font Awesome -->
@@ -18,28 +16,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
 </head>
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #330033;">
-      <a class="navbar-brand" href="/"><img src="static/img/book_icon.png" width="30" height="30" alt=""> Journal</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/dashboard">Dashboard</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/entries">Older Entries</a>
-          </li>
-        <li class="nav-item active">    
-          <a class="nav-link" href="/login">Login/Logout</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/register">Register</a>
-      </li>
-      </ul>
-      </div>
+        <a class="navbar-brand" href="/"><img src="static/img/book_icon.png" width="30" height="30" alt=""> Journal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/entries">Older Entries</a>
+                </li>
+                <li class="nav-item active">    
+                    <a class="nav-link" href="/login">Login/Logout</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+            </ul>
+        </div>
     </nav>
     {% for message in get_flashed_messages() %}
     <div class="alert alert-info" role="alert">
@@ -56,13 +53,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <footer class="page-footer font-small special-color-dark pt-4">
-        <div class="footer-copyright text-center py-3"><span style="z-index:50;font-size:0.9em;">© 2018 Copyright:
-        <a href="https://www.github.com/Krysioly" style="color: #660066; margin-left: 4px; vertical-align:middle;"> Krysioly</a>
-        <p>Quote by: <a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: #660066; margin-left: 4px; vertical-align: middle;">theysaidso.com</a>
-        Weather by: <a href='https://openweathermap.org/' style="color: #660066; margin-left: 4px; vertical-align:middle;">OpenWeatherMap</a>
-        News by: <a href='https://newsapi.org' style="color: #660066; margin-left: 4px; vertical-align: middle;">newsapi.org</a></p></span>
+        <div class="footer-copyright text-center py-3">
+            <span style="z-index:50;font-size:0.9em;">© 2018 Copyright:
+            <a href="https://www.github.com/Krysioly" style="color: #660066; margin-left: 4px; vertical-align:middle;"> Krysioly</a>
+            <p>Quote by: <a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: #660066; margin-left: 4px; vertical-align: middle;">theysaidso.com</a>
+                Weather by: <a href='https://openweathermap.org/' style="color: #660066; margin-left: 4px; vertical-align:middle;">OpenWeatherMap</a>
+                News by: <a href='https://newsapi.org' style="color: #660066; margin-left: 4px; vertical-align: middle;">newsapi.org</a></p></span>
         </div>
     </footer>
-
 </body>
 </html>

@@ -1,10 +1,7 @@
 """Models and database functions"""
 
 from flask_sqlalchemy import SQLAlchemy
-
 db = SQLAlchemy()
-
-
 
 class User(db.Model):
     """create users in database"""
@@ -19,7 +16,6 @@ class User(db.Model):
 
     def __repr__(self):
             """Provide helpful representation when printed."""
-
             return f"<User user_id={self.user_id} email={self.email}>"
 
 
@@ -41,7 +37,6 @@ class Entry(db.Model):
 
     def __repr__(self):
             """Provide helpful representation when printed."""
-
             return f"<Entry date={self.date} user={self.user_id}>"
 
 
@@ -54,17 +49,13 @@ class Todo(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     todo = db.Column(db.String(1000))
     
-
     #relationship#
     user = db.relationship("User", backref = db.backref("todos"))
 
     def __repr__(self):
             """Provide helpful representation when printed."""
-
             return f"<Todo user={self.user_id} todo_id={self.todo_id}>"
-
-
-    
+  
 
 ############################################################################
 def connect_to_db(app, db_uri='postgresql:///journals'):
@@ -78,10 +69,6 @@ def connect_to_db(app, db_uri='postgresql:///journals'):
 
 
 if __name__ == "__main__":
-
     from server import app
     connect_to_db(app)
     print("Connected to DB.")
-
-
-

@@ -1,3 +1,9 @@
+bobs hashed password = 6ca13d52ca70c883e0f0bb101e425a89e8624de51db2d2392593af6a84118090
+
+
+
+
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -17,31 +23,46 @@
 
 <div>
     <!-- <h2>Daily Quote</h2>
-    <p>  {{ quote }}  </p> -->
+    <p>  
+    {
+    { quote }}  </p> -->
     
 
    <!--  <h2>Weather</h2>
-    <img src="{{ img_src }}" id="weather-icon">
+    <img src="
+    {
+    { img_src }}" id="weather-icon">
     <p><b>Weather: </b><br>
-    {{ weathers["main"] }}<br>
+    
+    {
+    { weathers["main"] }}<br>
     <b>Tempurature: </b><br>
-    Current: {{ weathers["temp"] }}F<br>
-    High: {{ weathers["temp_min"] }}F<br>
-    Low: {{ weathers["temp_max"] }}F
+    Current: 
+    {
+    { weathers["temp"] }}F<br>
+    High: 
+    {
+    { weathers["temp_min"] }}F<br>
+    Low: 
+    {
+    { weathers["temp_max"] }}F
     </p> -->
 </div>
 
 
 
-// function changeNewsCat(results) {
+// function changeNewsCat(results) 
+{
 //     console.log(results);
 //     $('#categorynews').html(results);
 // }
 
-// function updateNewsCat(evt) {
+// function updateNewsCat(evt) 
+{
 //     evt.preventDefault();
 
-//     let searchCat = {'category' : $('radioCat').val(),};
+//     let searchCat = 
+{'category' : $('radioCat').val(),};
 //     console.log(searchCat)
     
 //     $.get("/search-category", searchCat ,changeNewsCat);
@@ -90,7 +111,8 @@ def search_category():
 
     # print("\n\n",all_articles,"\n\n")
     # articles = all_articles["articles"]
-    # dictionary = {}
+    # dictionary = 
+    {}
     # i=0
     # for article in articles:
     #     print("\n\n\naritcle\n",article,"\n\n")
@@ -162,3 +184,10 @@ def search_category():
 <div class="block flex flex-1">
 <p class="smallest-text mt0 mb0 uppercase flex-1 right-align" style="color: rgb(68, 68, 68);">Estimated EPS</p>
 </div></div></div></div></a></div></div>
+
+
+
+
+
+
+

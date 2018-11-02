@@ -1,31 +1,3 @@
-1 month = [
-{"date": "2018-09-24", "open": 1157.17, "high": 1178, "low": 1146.91, "close": 1173.37, "volume": 1271017, "unadjustedVolume": 1271017, "change": 7.28, "changePercent": 0.624, "vwap": 1167.11, "label": "Sep 24", "changeOverTime": 0}, 
-{"date": "2018-09-25", "open": 1176.15, "high": 1186.88, "low": 1168, "close": 1184.65, "volume": 977731, "unadjustedVolume": 977731, "change": 11.28, "changePercent": 0.961, "vwap": 1181.28, "label": "Sep 25", "changeOverTime": 0.009613335946888195}, 
-{"date": "2018-09-26", "open": 1185.15, "high": 1194.23, "low": 1174.77, "close": 1180.49, "volume": 1462253, "unadjustedVolume": 1462253, "change": -4.16, "changePercent": -0.351, "vwap": 1183.49, "label": "Sep 26", "changeOverTime": 0.006067992193425875}, 
-{"date": "2018-09-27", "open": 1186.73, "high": 1202.1, "low": 1183.63, "close": 1194.64, "volume": 1260754, "unadjustedVolume": 1260754, "change": 14.15, "changePercent": 1.199, "vwap": 1196.13, "label": "Sep 27", "changeOverTime": 0.018127274431765095}, 
-{"date": "2018-09-28", "open": 1191.87, "high": 1195.41, "low": 1184.5, "close": 1193.47, "volume": 1380629, "unadjustedVolume": 1380629, "change": -1.17, "changePercent": -0.098, "vwap": 1191.41, "label": "Sep 28", "changeOverTime": 0.017130146501103775}, 
-{"date": "2018-10-01", "open": 1199.89, "high": 1209.9, "low": 1190.3, "close": 1195.31, "volume": 1357604, "unadjustedVolume": 1357604, "change": 1.84, "changePercent": 0.154, "vwap": 1198.59, "label": "Oct 1", "changeOverTime": 0.018698279315135086}, 
-{"date": "2018-10-02", "open": 1190.96, "high": 1209.96, "low": 1186.63, "close": 1200.11, "volume": 1687914, "unadjustedVolume": 1687914, "change": 4.8, "changePercent": 0.402, "vwap": 1200.81, "label": "Oct 2", "changeOverTime": 0.02278906056912995}, 
-{"date": "2018-10-03", "open": 1205, "high": 1206.41, "low": 1193.83, "close": 1202.95, "volume": 1256214, "unadjustedVolume": 1256214, "change": 2.84, "changePercent": 0.237, "vwap": 1200.75, "label": "Oct 3", "changeOverTime": 0.025209439477743727}, 
-{"date": "2018-10-04", "open": 1195.33, "high": 1197.51, "low": 1155.58, "close": 1168.19, "volume": 2209490, "unadjustedVolume": 2209490, "change": -34.76, "changePercent": -2.89, "vwap": 1171.01, "label": "Oct 4", "changeOverTime": -0.004414634769936028}, 
-{"date": "2018-10-05", "open": 1167.5, "high": 1173.5, "low": 1145.12, "close": 1157.35, "volume": 1184452, "unadjustedVolume": 1184452, "change": -10.84, "changePercent": -0.928, "vwap": 1156.93, "label": "Oct 5", "changeOverTime": -0.013652982435207977}, 
-{"date": "2018-10-08", "open": 1150.11, "high": 1168, "low": 1127.36, "close": 1148.97, "volume": 1932355, "unadjustedVolume": 1932355, "change": -8.38, "changePercent": -0.724, "vwap": 1145.55, "label": "Oct 8", "changeOverTime": -0.020794804707807313}, 
-{"date": "2018-10-09", "open": 1146.15, "high": 1154.35, "low": 1137.57, "close": 1138.82, "volume": 1308764, "unadjustedVolume": 1308764, "change": -10.15, "changePercent": -0.883, "vwap": 1144.16, "label": "Oct 9", "changeOverTime": -0.029445102567817447}, 
-{"date": "2018-10-10", "open": 1131.08, "high": 1132.17, "low": 1081.13, "close": 1081.22, "volume": 2675742, "unadjustedVolume": 2675742, "change": -57.6, "changePercent": -5.058, "vwap": 1102.11, "label": "Oct 10", "changeOverTime": -0.07853447761575622}, 
-{"date": "2018-10-11", "open": 1072.94, "high": 1106.4, "low": 1068.27, "close": 1079.32, "volume": 2950120, "unadjustedVolume": 2950120, "change": -1.9, "changePercent": -0.176, "vwap": 1085.89, "label": "Oct 11", "changeOverTime": -0.08015374519546262}, 
-{"date": "2018-10-12", "open": 1108, "high": 1115, "low": 1086.4, "close": 1110.08, "volume": 2101303, "unadjustedVolume": 2101303, "change": 30.76, "changePercent": 2.85, "vwap": 1105.34, "label": "Oct 12", "changeOverTime": -0.053938655326111945}, 
-{"date": "2018-10-15", "open": 1108.91, "high": 1113.45, "low": 1089, "close": 1092.25, "volume": 1372393, "unadjustedVolume": 1372393, "change": -17.83, "changePercent": -1.606, "vwap": 1098.7, "label": "Oct 15", "changeOverTime": -0.06913420319251379}, 
-{"date": "2018-10-16", "open": 1104.59, "high": 1124.22, "low": 1102.5, "close": 1121.28, "volume": 1928540, "unadjustedVolume": 1928540, "change": 29.03, "changePercent": 2.658, "vwap": 1116.87, "label": "Oct 16", "changeOverTime": -0.04439349906679046}, 
-{"date": "2018-10-17", "open": 1126.46, "high": 1128.99, "low": 1102.19, "close": 1115.69, "volume": 1467226, "unadjustedVolume": 1467226, "change": -5.59, "changePercent": -0.499, "vwap": 1113.21, "label": "Oct 17", "changeOverTime": -0.04915755473550529}, 
-{"date": "2018-10-18", "open": 1121.84, "high": 1121.84, "low": 1077.09, "close": 1087.97, "volume": 2094524, "unadjustedVolume": 2094524, "change": -27.72, "changePercent": -2.485, "vwap": 1092.02, "label": "Oct 18", "changeOverTime": -0.07278181647732589}, 
-{"date": "2018-10-19", "open": 1093.37, "high": 1110.36, "low": 1087.75, "close": 1096.46, "volume": 1267649, "unadjustedVolume": 1267649, "change": 8.49, "changePercent": 0.78, "vwap": 1097.55, "label": "Oct 19", "changeOverTime": -0.06554624713432239}, 
-{"date": "2018-10-22", "open": 1103.06, "high": 1112.23, "low": 1091, "close": 1101.16, "volume": 1514220, "unadjustedVolume": 1514220, "change": 4.7, "changePercent": 0.429, "vwap": 1103.28, "label": "Oct 22", "changeOverTime": -0.06154069048978567}, 
-{"date": "2018-10-23", "open": 1080.89, "high": 1107.89, "low": 1070, "close": 1103.69, "volume": 1848654, "unadjustedVolume": 1848654, "change": 2.53, "changePercent": 0.23, "vwap": 1091.22, "label": "Oct 23", "changeOverTime": -0.05938450787049255}]
-
-// ///////////////////////////////////////////////////////
-
-
-
 1 day = [
 {"date":"20181025","minute":"09:30","label":"09:30 AM","high":1073.51,"low":1071.78,"average":1072.767,"volume":828,"notional":888251.505,"numberOfTrades":10,"marketHigh":1075,"marketLow":1069.94,"marketAverage":1072.069,"marketVolume":68402,"marketNotional":73331650.7464,"marketNumberOfTrades":570,"open":1071.78,"close":1072.93,"marketOpen":1072.56,"marketClose":1072,"changeOverTime":0,"marketChangeOverTime":0},
 {"date":"20181025","minute":"09:31","label":"09:31 AM","high":1072.74,"low":1071.75,"average":1072.262,"volume":325,"notional":348485,"numberOfTrades":4,"marketHigh":1073.71,"marketLow":1070.35,"marketAverage":1071.719,"marketVolume":11658,"marketNotional":12494099.9106,"marketNumberOfTrades":354,"open":1072.74,"close":1072.26,"marketOpen":1072.18,"marketClose":1073.03,"changeOverTime":-0.0004707452783317432,"marketChangeOverTime":-0.00032647152375444964},
@@ -419,11 +391,32 @@
 {"date":"20181025","minute":"15:59","label":"3:59 PM","high":1101.085,"low":1096.28,"average":1097.737,"volume":2019,"notional":2216330.41,"numberOfTrades":34,"marketHigh":1101.69,"marketLow":1096.2,"marketAverage":1098.141,"marketVolume":59333,"marketNotional":65155983.7093,"marketNumberOfTrades":1335,"open":1101.085,"close":1097.17,"marketOpen":1101.04,"marketClose":1098,"changeOverTime":0.02327625663354673,"marketChangeOverTime":0.02431933019236646}]
 
 
+1 month = [
+{"date": "2018-09-24", "open": 1157.17, "high": 1178, "low": 1146.91, "close": 1173.37, "volume": 1271017, "unadjustedVolume": 1271017, "change": 7.28, "changePercent": 0.624, "vwap": 1167.11, "label": "Sep 24", "changeOverTime": 0}, 
+{"date": "2018-09-25", "open": 1176.15, "high": 1186.88, "low": 1168, "close": 1184.65, "volume": 977731, "unadjustedVolume": 977731, "change": 11.28, "changePercent": 0.961, "vwap": 1181.28, "label": "Sep 25", "changeOverTime": 0.009613335946888195}, 
+{"date": "2018-09-26", "open": 1185.15, "high": 1194.23, "low": 1174.77, "close": 1180.49, "volume": 1462253, "unadjustedVolume": 1462253, "change": -4.16, "changePercent": -0.351, "vwap": 1183.49, "label": "Sep 26", "changeOverTime": 0.006067992193425875}, 
+{"date": "2018-09-27", "open": 1186.73, "high": 1202.1, "low": 1183.63, "close": 1194.64, "volume": 1260754, "unadjustedVolume": 1260754, "change": 14.15, "changePercent": 1.199, "vwap": 1196.13, "label": "Sep 27", "changeOverTime": 0.018127274431765095}, 
+{"date": "2018-09-28", "open": 1191.87, "high": 1195.41, "low": 1184.5, "close": 1193.47, "volume": 1380629, "unadjustedVolume": 1380629, "change": -1.17, "changePercent": -0.098, "vwap": 1191.41, "label": "Sep 28", "changeOverTime": 0.017130146501103775}, 
+{"date": "2018-10-01", "open": 1199.89, "high": 1209.9, "low": 1190.3, "close": 1195.31, "volume": 1357604, "unadjustedVolume": 1357604, "change": 1.84, "changePercent": 0.154, "vwap": 1198.59, "label": "Oct 1", "changeOverTime": 0.018698279315135086}, 
+{"date": "2018-10-02", "open": 1190.96, "high": 1209.96, "low": 1186.63, "close": 1200.11, "volume": 1687914, "unadjustedVolume": 1687914, "change": 4.8, "changePercent": 0.402, "vwap": 1200.81, "label": "Oct 2", "changeOverTime": 0.02278906056912995}, 
+{"date": "2018-10-03", "open": 1205, "high": 1206.41, "low": 1193.83, "close": 1202.95, "volume": 1256214, "unadjustedVolume": 1256214, "change": 2.84, "changePercent": 0.237, "vwap": 1200.75, "label": "Oct 3", "changeOverTime": 0.025209439477743727}, 
+{"date": "2018-10-04", "open": 1195.33, "high": 1197.51, "low": 1155.58, "close": 1168.19, "volume": 2209490, "unadjustedVolume": 2209490, "change": -34.76, "changePercent": -2.89, "vwap": 1171.01, "label": "Oct 4", "changeOverTime": -0.004414634769936028}, 
+{"date": "2018-10-05", "open": 1167.5, "high": 1173.5, "low": 1145.12, "close": 1157.35, "volume": 1184452, "unadjustedVolume": 1184452, "change": -10.84, "changePercent": -0.928, "vwap": 1156.93, "label": "Oct 5", "changeOverTime": -0.013652982435207977}, 
+{"date": "2018-10-08", "open": 1150.11, "high": 1168, "low": 1127.36, "close": 1148.97, "volume": 1932355, "unadjustedVolume": 1932355, "change": -8.38, "changePercent": -0.724, "vwap": 1145.55, "label": "Oct 8", "changeOverTime": -0.020794804707807313}, 
+{"date": "2018-10-09", "open": 1146.15, "high": 1154.35, "low": 1137.57, "close": 1138.82, "volume": 1308764, "unadjustedVolume": 1308764, "change": -10.15, "changePercent": -0.883, "vwap": 1144.16, "label": "Oct 9", "changeOverTime": -0.029445102567817447}, 
+{"date": "2018-10-10", "open": 1131.08, "high": 1132.17, "low": 1081.13, "close": 1081.22, "volume": 2675742, "unadjustedVolume": 2675742, "change": -57.6, "changePercent": -5.058, "vwap": 1102.11, "label": "Oct 10", "changeOverTime": -0.07853447761575622}, 
+{"date": "2018-10-11", "open": 1072.94, "high": 1106.4, "low": 1068.27, "close": 1079.32, "volume": 2950120, "unadjustedVolume": 2950120, "change": -1.9, "changePercent": -0.176, "vwap": 1085.89, "label": "Oct 11", "changeOverTime": -0.08015374519546262}, 
+{"date": "2018-10-12", "open": 1108, "high": 1115, "low": 1086.4, "close": 1110.08, "volume": 2101303, "unadjustedVolume": 2101303, "change": 30.76, "changePercent": 2.85, "vwap": 1105.34, "label": "Oct 12", "changeOverTime": -0.053938655326111945}, 
+{"date": "2018-10-15", "open": 1108.91, "high": 1113.45, "low": 1089, "close": 1092.25, "volume": 1372393, "unadjustedVolume": 1372393, "change": -17.83, "changePercent": -1.606, "vwap": 1098.7, "label": "Oct 15", "changeOverTime": -0.06913420319251379}, 
+{"date": "2018-10-16", "open": 1104.59, "high": 1124.22, "low": 1102.5, "close": 1121.28, "volume": 1928540, "unadjustedVolume": 1928540, "change": 29.03, "changePercent": 2.658, "vwap": 1116.87, "label": "Oct 16", "changeOverTime": -0.04439349906679046}, 
+{"date": "2018-10-17", "open": 1126.46, "high": 1128.99, "low": 1102.19, "close": 1115.69, "volume": 1467226, "unadjustedVolume": 1467226, "change": -5.59, "changePercent": -0.499, "vwap": 1113.21, "label": "Oct 17", "changeOverTime": -0.04915755473550529}, 
+{"date": "2018-10-18", "open": 1121.84, "high": 1121.84, "low": 1077.09, "close": 1087.97, "volume": 2094524, "unadjustedVolume": 2094524, "change": -27.72, "changePercent": -2.485, "vwap": 1092.02, "label": "Oct 18", "changeOverTime": -0.07278181647732589}, 
+{"date": "2018-10-19", "open": 1093.37, "high": 1110.36, "low": 1087.75, "close": 1096.46, "volume": 1267649, "unadjustedVolume": 1267649, "change": 8.49, "changePercent": 0.78, "vwap": 1097.55, "label": "Oct 19", "changeOverTime": -0.06554624713432239}, 
+{"date": "2018-10-22", "open": 1103.06, "high": 1112.23, "low": 1091, "close": 1101.16, "volume": 1514220, "unadjustedVolume": 1514220, "change": 4.7, "changePercent": 0.429, "vwap": 1103.28, "label": "Oct 22", "changeOverTime": -0.06154069048978567}, 
+{"date": "2018-10-23", "open": 1080.89, "high": 1107.89, "low": 1070, "close": 1103.69, "volume": 1848654, "unadjustedVolume": 1848654, "change": 2.53, "changePercent": 0.23, "vwap": 1091.22, "label": "Oct 23", "changeOverTime": -0.05938450787049255}]
 
 
-3 month = "[
-
-{"date":"2018-07-30","open":1228.01,"high":1234.92,"low":1211.47,"close":1219.74,"volume":1849904,"unadjustedVolume":1849904,"change":-18.76,"changePercent":-1.515,"vwap":1221.19,"label":"Jul 30, 18","changeOverTime":0},
+3 month = "[{"date":"2018-07-30","open":1228.01,"high":1234.92,"low":1211.47,"close":1219.74,"volume":1849904,"unadjustedVolume":1849904,"change":-18.76,"changePercent":-1.515,"vwap":1221.19,"label":"Jul 30, 18","changeOverTime":0},
 {"date":"2018-07-31","open":1220.01,"high":1227.59,"low":1205.6,"close":1217.26,"volume":1644722,"unadjustedVolume":1644722,"change":-2.48,"changePercent":-0.203,"vwap":1218.31,"label":"Jul 31, 18","changeOverTime":-0.002033220194467688},
 {"date":"2018-08-01","open":1228,"high":1233.47,"low":1210.21,"close":1220.01,"volume":1567264,"unadjustedVolume":1567264,"change":2.75,"changePercent":0.226,"vwap":1221.47,"label":"Aug 1, 18","changeOverTime":0.00022135865020412695},
 {"date":"2018-08-02","open":1205.9,"high":1229.88,"low":1204.79,"close":1226.15,"volume":1531299,"unadjustedVolume":1531299,"change":6.14,"changePercent":0.503,"vwap":1216.96,"label":"Aug 2, 18","changeOverTime":0.005255218325216917},
@@ -488,9 +481,6 @@
 {"date":"2018-10-25","open":1071.79,"high":1110.98,"low":1069.55,"close":1095.57,"volume":2545839,"unadjustedVolume":2545839,"change":44.86,"changePercent":4.269,"vwap":1094,"label":"Oct 25","changeOverTime":-0.10180038368832708},
 {"date":"2018-10-26","open":1037.03,"high":1106.53,"low":1034.09,"close":1071.47,"volume":4187586,"unadjustedVolume":4187586,"change":-24.1,"changePercent":-2.2,"vwap":1064.59,"label":"Oct 26","changeOverTime":-0.12155869283617819},
 {"date":"2018-10-29","open":1082.47,"high":1097.04,"low":995.83,"close":1020.08,"volume":3880723,"unadjustedVolume":3880723,"change":-51.39,"changePercent":-4.796,"vwap":1039.72,"label":"Oct 29","changeOverTime":-0.16369062259169984}]
-
-
-
 
 
 1 year = [
@@ -747,7 +737,5 @@
 {"date":"2018-10-26","open":1037.03,"high":1106.53,"low":1034.09,"close":1071.47,"volume":4187586,"unadjustedVolume":4187586,"change":-24.1,"changePercent":-2.2,"vwap":1064.59,"label":"Oct 26","changeOverTime":0.053445546696030924},
 {"date":"2018-10-29","open":1082.47,"high":1097.04,"low":995.83,"close":1020.08,"volume":3880723,"unadjustedVolume":3880723,"change":-51.39,"changePercent":-4.796,"vwap":1039.72,"label":"Oct 29","changeOverTime":0.002920038147299729}]
 
-
-
-
-info = {"symbol": "GOOG", "companyName": "Alphabet Inc.", "exchange": "Nasdaq Global Select", "industry": "Online Media", "website": "https://www.abc.xyz", "description": "Alphabet Inc is a provider of internet content products and portals. Its suite of brands includes Search, Android, YouTube, Apps, Maps & Ads.", "CEO": "Larry Page", "issueType": "cs", "sector": "Technology", "tags": ["Technology", "Internet Content & Information", "Online Media"]}
+info = 
+{"symbol": "GOOG", "companyName": "Alphabet Inc.", "exchange": "Nasdaq Global Select", "industry": "Online Media", "website": "https://www.abc.xyz", "description": "Alphabet Inc is a provider of internet content products and portals. Its suite of brands includes Search, Android, YouTube, Apps, Maps & Ads.", "CEO": "Larry Page", "issueType": "cs", "sector": "Technology", "tags": ["Technology", "Internet Content & Information", "Online Media"]}

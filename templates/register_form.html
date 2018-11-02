@@ -5,13 +5,14 @@ Register
 {% endblock %}
 
 {% block body %}
+<div class="center">
     <h1> Register New User </h1>
-
+    <img src="static/img/rainbow-stack-books.png">
     <form action='/check-register' method = 'POST'>
         Email:<input type="text" name="email" required><br>
         Password:<input type="text" name="password" required><br>
         Zipcode:<input type="text" name="zipcode" required><br>
         <input type="submit" value="Make User">
     </form>
-
+</div>
 {% endblock %}

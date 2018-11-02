@@ -5,15 +5,13 @@ Old Entries
 {% endblock %}
 
 {% block body %}
-
-
-<div>
-    <h1 class="center">{{user.name}}'s Journal</h1>
-</div>
-<div>
-    <img class="center" src="static/img/book-stack.jpg">
-</div>
-{% for entry in entries %}
+    <div>
+        <h1 class="center">{{user.name}}'s Journal</h1>
+    </div>
+    <div>
+        <img class="center" src="static/img/book-stack.jpg">
+    </div>
+    {% for entry in entries %}
     <div class="oldentry">
         <br>
         <p><b>DATE:</b>{{ entry.date }}<br>
@@ -23,8 +21,5 @@ Old Entries
         <b>Weather: </b> {{ entry.weather }}</p>
         <br>
     </div>
-{% endfor %}
-
-
-
+    {% endfor %}
 {% endblock %}
