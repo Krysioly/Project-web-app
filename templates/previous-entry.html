@@ -6,20 +6,21 @@ Old Entries
 
 {% block body %}
     <div>
-        <h1 class="center">{{user.name}}'s Journal</h1>
+        <br>
+        <h1 class="center title">{{user.name}}'s Memoirs</h1>
     </div>
     <div>
-        <img class="center" src="static/img/book-stack.jpg">
+        <img class="backimg" src="static/img/book-stack.jpg" border="0" alt="">
+        {% for entry in entries %}
+        <div class="oldentry entry" style="width:50%">
+            <br>
+            <p><b>Date:</b>{{ entry.date }}<br>
+            <b>Title: </b> {{ entry.title }}<br>
+            <b>Entry: </b> {{ entry.text }}<br>
+            <b>Quote: </b> {{ entry.quote }}<br>
+            <b>Weather: </b> {{ entry.weather }}</p>
+            <br>
+        </div>
+        {% endfor %}
     </div>
-    {% for entry in entries %}
-    <div class="oldentry">
-        <br>
-        <p><b>DATE:</b>{{ entry.date }}<br>
-        <b>TITLE: </b> {{ entry.title }}<br>
-        <b>ENTRY: </b> {{ entry.text }}<br>
-        <b>Quote: </b> {{ entry.quote }}<br>
-        <b>Weather: </b> {{ entry.weather }}</p>
-        <br>
-    </div>
-    {% endfor %}
 {% endblock %}

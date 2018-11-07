@@ -1,6 +1,7 @@
 <!doctype>
 <html>
 <head>
+    <!-- JQUERY -->
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
     <title>
         {% block title %} TITLE {% endblock %}
@@ -12,34 +13,48 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Load our stylesheet -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Merienda|Poppins" rel="stylesheet">
+    <!-- My CSS Style -->
     <link rel="stylesheet" href="static/css/style.css">
+    <!-- Chart JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #330033;">
-        <a class="navbar-brand" href="/"><img src="static/img/book_icon.png" width="30" height="30" alt=""> Journal</a>
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #330033; font-family: 'Merienda', cursive;">
+        <a class="navbar-brand" href="/"><img src="static/img/book_icon.png" width="30" height="30" alt=""> Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item active">
                     <a class="nav-link" href="/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/entries">Older Entries</a>
                 </li>
+                {% if 'email' in session %}
                 <li class="nav-item active">    
-                    <a class="nav-link" href="/login">Login/Logout</a>
+                    <a class="nav-link" href="/login">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item active">    
+                    <a class="nav-link" href="/login">Login</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/register">Register</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
     {% for message in get_flashed_messages() %}
-    <div class="alert alert-info" role="alert">
+    <div class="alert alert-light" style="color: #660066; height:8%" role="alert">
         <ul>        
             {{ message }}
         </ul>
@@ -52,13 +67,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <footer class="page-footer font-small special-color-dark pt-4">
+    <footer class="page-footer font-small special-color-dark pt-4" style="font-family: 'Merienda', cursive;">
         <div class="footer-copyright text-center py-3">
-            <span style="z-index:50;font-size:0.9em;">© 2018 Copyright:
+            <span style="z-index:50;font-size:0.9em;">Copyright © 2018:
             <a href="https://www.github.com/Krysioly" style="color: #660066; margin-left: 4px; vertical-align:middle;"> Krysioly</a>
-            <p>Quote by: <a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: #660066; margin-left: 4px; vertical-align: middle;">theysaidso.com</a>
-                Weather by: <a href='https://openweathermap.org/' style="color: #660066; margin-left: 4px; vertical-align:middle;">OpenWeatherMap</a>
-                News by: <a href='https://newsapi.org' style="color: #660066; margin-left: 4px; vertical-align: middle;">newsapi.org</a></p></span>
+            <p>Quote by: <a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: #660066; margin-left: 4px; vertical-align: middle;">theysaidso <i class="far fa-star"></i></a>
+                Weather by: <a href='https://openweathermap.org/' style="color: #660066; margin-left: 4px; vertical-align:middle;">OpenWeatherMap <i class="far fa-star"></i></a>
+                News by: <a href='https://newsapi.org' style="color: #660066; margin-left: 4px; vertical-align: middle;">newsapi <i class="far fa-star"></i></a>
+                Stocks by: <a href="https://iextrading.com/" style="color: #660066; margin-left: 4px; vertical-align: middle;">iextrading <i class="far fa-star"></i></a></p></span>
         </div>
     </footer>
 </body>

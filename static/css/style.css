@@ -1,10 +1,15 @@
 footer {
-            position:relative;
-            width:100%;
-            bottom:0px; 
+    position:relative;
+    width:100%;
+    bottom:0px; 
         }
 body {
-            background-color:#ccffe0;
+    background: url(/static/img/mintfabric.jpg); 
+    position: relative;                      
+    font-family: 'Poppins', sans-serif;
+}
+.layer {
+    background-color: rgba(204, 255, 224, 0.7);   
 }
 tr, td {
     width:40px;
@@ -25,6 +30,7 @@ th {
     border-style: ridge;
     border-color: 660066;
     text-align: center;
+    background-color: rgba(66, 244, 232, .5);
 }
 .center {
     display: block;
@@ -34,4 +40,65 @@ th {
 }
 h1, h2, h3 {
     color: 660066;
+    font-family: 'Merienda', cursive;
+}
+
+.entry {
+    font-size: 18pt;
+    font-family: 'Dancing Script', cursive;
+}
+.backimg {
+    height: auto;
+    left: 0;
+    margin: 0;
+    min-height: 100%;
+    min-width: 674px;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+li {
+    text-align: left;
+}  
+.stocklayer{
+    background-color: rgba(144, 71, 193, 0.7); 
+}
+b{
+    color:#660066;
+}
+.title {
+    text-shadow: -3px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 70px;
+}
+
+
+
+#flash > .warning {
+    background-color: #42f4d9;
+    color: #660066;
+    font-family: 'Merienda', cursive;
+    border-color: #fbeed5;
+}
+
+#flash > .ok {
+    background-color: #42f4d9;
+    color: #660066;
+    font-family: 'Merienda', cursive;
+    border-color: #d6e9c6;
+}
+
+#flash > .error {
+    background-color: #42f4d9;
+    color: #660066;
+    font-family: 'Merienda', cursive;
+    border-color: #eed3d7;
+}
+
+#flash > .info {
+    background-color: #42f4d9;
+    color: #660066;
+    font-family: 'Merienda', cursive;
+    border-color: #bce8f1;
 }

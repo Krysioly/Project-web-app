@@ -49,6 +49,13 @@ def show_dashboard_form():
         return redirect("/login") 
 
 
+@app.route("/about")
+def show_about_me():
+    """Show user about app"""
+
+    return render_template("about.html")
+
+
 ############ Register/ logging ##############
 
 @app.route('/register')
@@ -291,6 +298,7 @@ def stocks_info():
         "datasets": [
             {"label" : stocks_json['symbol'],
             "data": datas,
+            "backgroundColor": "rgba(102,0,102,.5)",
             }
         ],
         "info": {"Symbol": stocks_json['symbol'],"Company": stocks_json['companyName'],
@@ -313,7 +321,7 @@ def make_calendar():
 
 def get_quote():
     """get data for qoute api """
-
+   
     responseQ = requests.get("http://quotes.rest/qod", {"Accept": "application/json"})
     quote_info = responseQ.json()
     quote = quote_info["contents"]["quotes"][0]["quote"]
@@ -372,17 +380,21 @@ def change_weather_img(weather):
         return "static/img/fog.png"
     elif "fog" in weather.lower():
         return "static/img/fog.png"
+    elif "smoke" in weather.lower():
+        return "static/img/fog.png"
+    elif "mist" in weather.lower():
+        return "static/img/fog.png"
 
 
 ################# Run App ##########################################
 
 if __name__ == "__main__":
     # We have to set debug=True here to invoke the DebugToolbarExtension
-    app.debug = True
-    # make sure templates, etc. are not cached in debug mode
-    app.jinja_env.auto_reload = app.debug
-    # Use the DebugToolbar
-    DebugToolbarExtension(app)
+    # app.debug = True
+    # # make sure templates, etc. are not cached in debug mode
+    # app.jinja_env.auto_reload = app.debug
+    # # Use the DebugToolbar
+    # DebugToolbarExtension(app)
 
     connect_to_db(app, 'postgresql:///journals')
     app.run(port=5000, host='0.0.0.0')

@@ -5,9 +5,9 @@ Dashboard
 {% endblock %}
 
 {% block body %}
-
 <div class="center">
-    <h1>{{user.name}}'s Dashboard</h1>
+    <br>
+    <h1 class="title">{{user.name}}'s Dashboard</h1>
 </div>
 <br>
 
@@ -17,7 +17,7 @@ Dashboard
         <div class="col-3">
             <!-- Quote -->
             <div class="card text-white mb-3" style="background-color: #330033; max-width: 18rem;">
-                <div class="card-header"><h4>Daily Quote</h4></div>
+                <div class="card-header" style="font-family: 'Merienda', cursive;"><h4>Daily Quote</h4>______________________</div>
                 <div class="card-body">
                     <p class="card-text">{{ quote }}</p>
                 </div>
@@ -52,9 +52,9 @@ Dashboard
 
         <div class="col-3">
             <!-- Weather -->
-            <div class="card border-info mb-3" style="max-width: 18rem;">
-                <div class="card-header text-info"><h4>Weather</h4></div>
-                <div class="card-body text-info">
+            <div class="card text-white mb-3" style="background-color: #330033; max-width: 18rem;">
+                <div class="card-header" style="font-family: 'Merienda', cursive;"><h4>Weather</h4>________________</div>
+                <div class="card-body">
                     <h5 class="card-title">{{ weathers["main"] }}</h5>
                     <img src="{{ img_src }}" id="weather-icon">
                     <p class="card-text"><b>Tempurature:</b><br>
@@ -69,12 +69,12 @@ Dashboard
             <!-- Entry -->
             <br>
             <h3><div id="finishedTitle"></div></h3>
-            <div id="finishedText"></div>
+            <div id="finishedText" class="entry"></div>
             <div id= "entry-div">
                 <h2>Write in journal: <i class="far fa-edit"></i></h2>
                 <form method="POST" id= "entry-form">
-                    <input type="text" id="title" placeholder="Your title"><br>
-                    <textarea id="text" rows="5" cols="40" placeholder="My day is going..."></textarea><br>
+                    <input type="text" class="form-control" id="title" placeholder="Your title"><br>
+                    <textarea class="form-control" id="text" rows="5" cols="40" placeholder="My day is going..."></textarea><br>
                     <input type="submit" id = "publish" value="Publish" class="btn btn-dark" style="background-color: #330033;">
                 </form>
             </div>
@@ -85,16 +85,8 @@ Dashboard
         </div>
     </div>
 </div>
-<br>
 <div class="container">
     <div class="row">
-        <div class="col-6">
-            <!-- News -->
-            <h2>News <i class="far fa-newspaper"></i></h2>
-            <form action="/search-keyword"><input type="text" id="keyword" placeholder="Search Keyword"><br><input type="submit" id="searchkey" value="News" class="btn btn-dark" style="background-color: #330033">
-            </form>
-            <p id="news"></p>
-        </div>
         <div class="col-6">
             <h2>Stocks <i class="fas fa-file-invoice"></i></h2>
             <form action="/search-stocks" id="stocksform">
@@ -114,19 +106,26 @@ Dashboard
                 <canvas id="stockschart"></canvas>
             </div>
         </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <!-- chart -->
+        <div class="col-6">
             <div class="center"><h2><i class="fas fa-book-open"></i> / <i class="fas fa-calendar-alt"></i></h2>
                 <canvas id="barChart"></canvas>
             </div>
         </div>
     </div>
 </div>
-
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <!-- News -->
+            <h2>News <i class="far fa-newspaper"></i></h2>
+            <form action="/search-keyword"><input type="text" id="keyword" placeholder="Search Keyword"><br><input type="submit" id="searchkey" value="News" class="btn btn-dark" style="background-color: #330033">
+            </form>
+            <p id="news"></p>
+        </div>
+    </div>
+</div>
+</div>
 
 
 
@@ -134,6 +133,10 @@ Dashboard
 ///////////////////////// Entry Bar Chart //////////////////////////////
 const options = {
     responsive: true,
+    legend: {
+            labels: {
+                fontColor: "black",
+            }
     scales: {
         xAxes: [{
             ticks: {
@@ -192,7 +195,7 @@ publish.on('click', updateDiv);
 let todoList = $('#todoList'); //ul id
 let update = $('#update'); //submit id
 function appendTodo(results) {
-    $('#todoList').append("<li>"+results+"</li>");
+    $('#todoList').append('<li>'+results+'</li>');
 };
 function updateTodo(evt) {
     evt.preventDefault();
@@ -215,11 +218,10 @@ $("#todoList").on("click", function(e) {
 function changeNewsKey(results) {
     for ( let obj of results.articles) {
         $('#news').append('<b>'+obj.title+'</b><br>');
-        $('#news').append('<img src="'+obj.urlToImage+'" height="200" width="300"><br>');
+        $('#news').append('<img src="'+obj.urlToImage+'" style="height: 300; width:500;"><br>');
         $('#news').append(obj.description,'<br>');
-        $('#news').append('<a href="">Read more...</a><br>');
-        $('#news').attr("href", obj.url);
-        $('#news').append('<br>')
+        $('#news').append('<a href="'+obj.url+'">Read more...</a><br>');
+        $('#news').append('<br><br>')
     };       
 };
 function updateNewsKey(evt) {

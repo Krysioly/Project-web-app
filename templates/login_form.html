@@ -5,16 +5,31 @@ Login
 {% endblock %}
 
 {% block body %}
-<div class="center">
-    <h1> Log In User </h1>
-        <img src="static/img/Journalpen.jpg" style="width:700px;height:500px;">
-        <form action='/check-login' method = 'POST'>
+<div class="row">
+    <div class="col-4">
+        <div class="center">
+            <br>
+            <br>
+            {% if 'email' in session %}
+            <h1 class="title"> Log Out </h1>
+            <br>
+            <form action='/logout' method = 'POST'>
+            <input type="submit" value="Log Out" class="btn btn-dark" style="background-color: #330033;">
+            </form>
+            {% else %}
+            <h1 class="title"> Log In </h1>
+            <br>
+            <form action='/check-login' method = 'POST'>
             Email: <input type="text" name="email"><br>
-            Password: <input type="text" name="password"><br>
-            <input type="submit" value="Log In">
-        </form>
-        <form action='/logout' method = 'POST'>
-            <input type="submit" value="Log Out">
-        </form>
+            Password: <input type="text" name="password"><br><br>
+            <input type="submit" value="Log In" class="btn btn-dark" style="background-color: #330033;">
+            </form>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-8">
+        
+        <img src="static/img/Journalpen.jpg" style="width:875px;height:550px;">
+    </div>
 </div>
 {% endblock %}
