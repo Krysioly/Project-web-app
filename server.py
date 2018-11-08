@@ -324,8 +324,11 @@ def get_quote():
     """get data for qoute api """
     
     responseQ = requests.get("http://quotes.rest/qod", {"Accept": "application/json"})
-    quote_info = responseQ.json()
-    quote = quote_info["contents"]["quotes"][0]["quote"]
+    if responseQ == '200':
+        quote_info = responseQ.json()
+        quote = quote_info["contents"]["quotes"][0]["quote"]
+    else:
+        quote = "Calm mind brings inner strength and self-confidence, so that's very important for good health."
 
     return quote
 
