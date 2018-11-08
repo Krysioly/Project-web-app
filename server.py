@@ -322,12 +322,12 @@ def make_calendar():
 
 def get_quote():
     """get data for qoute api """
-    pass
-    # responseQ = requests.get("http://quotes.rest/qod", {"Accept": "application/json"})
-    # quote_info = responseQ.json()
-    # quote = quote_info["contents"]["quotes"][0]["quote"]
+    
+    responseQ = requests.get("http://quotes.rest/qod", {"Accept": "application/json"})
+    quote_info = responseQ.json()
+    quote = quote_info["contents"]["quotes"][0]["quote"]
 
-    # return quote
+    return quote
 
 
 def get_weather():
