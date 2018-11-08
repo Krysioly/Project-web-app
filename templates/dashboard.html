@@ -153,11 +153,11 @@ $.get("/entry-data.json", function (data) {
 });
 ////////////////////// Stocks Chart and Info ////////////////////////////
 function print_stocks(results) {
-    $('#stockssymbol').append("<b>Symbol: </b>",results['info']['Symbol'],"<br>");
-    $('#stockscompany').append("<b>Company: </b>",results['info']['Company'],"<br>");
-    $('#stocksdescription').append("<b>Description: </b>",results['info']['Description'],"<br>");
-    $('#stocksexchange').append("<b>Exchange: </b>",results['info']['Exchange'],"<br>");
-    $('#stockswebsite').append("<b>Website: </b>",results['info']['Website'],"<br>");
+    $('#stockssymbol').replaceWith("<b>Symbol: </b>",results['info']['Symbol'],"<br>");
+    $('#stockscompany').replaceWith("<b>Company: </b>",results['info']['Company'],"<br>");
+    $('#stocksdescription').replaceWith("<b>Description: </b>",results['info']['Description'],"<br>");
+    $('#stocksexchange').replaceWith("<b>Exchange: </b>",results['info']['Exchange'],"<br>");
+    $('#stockswebsite').replaceWith("<b>Website: </b>",results['info']['Website'],"<br>");
     let ctx_line = $("#stockschart").get(0).getContext("2d");
 
     let myLineChart = new Chart(ctx_line, {
