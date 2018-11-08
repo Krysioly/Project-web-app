@@ -76,9 +76,10 @@ def check_user_register():
     hash_password = hash_password.hexdigest()
 
     user_zipcode = request.form.get('zipcode')
+    user_name = request.form.get('name')
 
     if User.query.filter_by(email = user_email).first() is None:
-        new_user = User(email=user_email, password=hash_password, zipcode=user_zipcode)
+        new_user = User(name=user_name, email=user_email, password=hash_password, zipcode=user_zipcode)
         db.session.add(new_user)
         db.session.commit()
         flash('You were successfully registered')
@@ -321,12 +322,12 @@ def make_calendar():
 
 def get_quote():
     """get data for qoute api """
-   
-    responseQ = requests.get("http://quotes.rest/qod", {"Accept": "application/json"})
-    quote_info = responseQ.json()
-    quote = quote_info["contents"]["quotes"][0]["quote"]
+    pass
+    # responseQ = requests.get("http://quotes.rest/qod", {"Accept": "application/json"})
+    # quote_info = responseQ.json()
+    # quote = quote_info["contents"]["quotes"][0]["quote"]
 
-    return quote
+    # return quote
 
 
 def get_weather():
@@ -390,11 +391,11 @@ def change_weather_img(weather):
 
 if __name__ == "__main__":
     # We have to set debug=True here to invoke the DebugToolbarExtension
-    # app.debug = True
-    # # make sure templates, etc. are not cached in debug mode
-    # app.jinja_env.auto_reload = app.debug
-    # # Use the DebugToolbar
-    # DebugToolbarExtension(app)
+    app.debug = True
+    # make sure templates, etc. are not cached in debug mode
+    app.jinja_env.auto_reload = app.debug
+    # Use the DebugToolbar
+    DebugToolbarExtension(app)
 
     connect_to_db(app, 'postgresql:///journals')
     app.run(port=5000, host='0.0.0.0')

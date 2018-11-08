@@ -13,16 +13,21 @@ Register
             <h1 class="title"> Register New User </h1>
             <br>
             <form action='/check-register' method = 'POST'>
+            <strong>
+            Name: <input type="text" name="name" required><br>
             Email: <input type="text" name="email" required><br>
             Password: <input type="text" name="password" required><br>
-            Zipcode: <input type="text" name="zipcode" required><br>
+            Zipcode: <input type="text" name="zipcode" required><br><br>
+            </strong>
             <input type="submit" value="Make User" class="btn btn-dark" style="background-color: #330033;">
             </form>
         </div>
     </div>
     <div class="col-8">
         
-        <img src="static/img/Journalpen.jpg" style="width:875px;height:550px;">
+        <img class="backimg" src="static/img/Journalpen.jpg" style="opacity: .9;">
+        <!-- style="width:875px;height:550px;"> -->
     </div>
 </div>
+<br>
 {% endblock %}

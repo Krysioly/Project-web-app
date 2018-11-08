@@ -13,7 +13,7 @@ newsapi-python==0.2.3
 pkg-resources==0.0.0
 psycopg2==2.7.5
 python-dateutil==2.7.3
-requests==2.17.1
+requests==2.20.0
 selenium==3.14.1
 six==1.11.0
 SQLAlchemy==1.2.8

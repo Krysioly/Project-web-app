@@ -5,6 +5,7 @@ Dashboard
 {% endblock %}
 
 {% block body %}
+<img class="backimg" src="static/img/heartbook.jpg" border="0" style="opacity: .7;">
 <div class="center">
     <br>
     <h1 class="title">{{user.name}}'s Dashboard</h1>
@@ -16,21 +17,19 @@ Dashboard
     <div class="row">
         <div class="col-3">
             <!-- Quote -->
-            <div class="card text-white mb-3" style="background-color: #330033; max-width: 18rem;">
-                <div class="card-header" style="font-family: 'Merienda', cursive;"><h4>Daily Quote</h4>______________________</div>
-                <div class="card-body">
-                    <p class="card-text">{{ quote }}</p>
+                <div style="font-family: 'Merienda', cursive;color:#660066">
+                    <h4>Daily Quote</h4>
+                    <p>{{ quote }}</p>
                 </div>
-            </div>
         </div>
 
         <div class="col-6">
-            <img src="static/img/journal.jpg">
+            <img src="static/img/journal.jpg" style="border-radius: 9%;">
         </div>
         
         <div class="col-3">
             <!-- Todo List -->
-            <div class="center">
+            <div class="center layer">
                 <h2>To-Do List</h2>
                 <ul id ="todoList">
                 {% for todo in todo_list %}
@@ -49,46 +48,54 @@ Dashboard
 <br>
 <div class="container center">
     <div class="row">
-
         <div class="col-3">
             <!-- Weather -->
-            <div class="card text-white mb-3" style="background-color: #330033; max-width: 18rem;">
-                <div class="card-header" style="font-family: 'Merienda', cursive;"><h4>Weather</h4>________________</div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ weathers["main"] }}</h5>
+                <div class="center" style="color: #660066;font-family: 'Merienda', cursive;">
+                    <h4>Weather</h4>
+                    <h5>{{ weathers["main"] }}</h5>
                     <img src="{{ img_src }}" id="weather-icon">
-                    <p class="card-text"><b>Tempurature:</b><br>
+                    <p><b>Tempurature:</b><br>
                     Current: {{ weathers["temp"] }}F<br>
                     High: {{ weathers["temp_min"] }}F<br>
                     Low: {{ weathers["temp_max"] }}F</p>
                 </div>
-            </div>
         </div>
 
         <div class="col-6 center">
             <!-- Entry -->
             <br>
-            <h3><div id="finishedTitle"></div></h3>
-            <div id="finishedText" class="entry"></div>
-            <div id= "entry-div">
-                <h2>Write your memoir: <i class="far fa-edit"></i></h2>
-                <form method="POST" id= "entry-form">
-                    <input type="text" class="form-control" id="title" placeholder="Memoir title"><br>
-                    <textarea class="form-control" id="text" rows="5" cols="40" placeholder="My day is going..."></textarea><br>
-                    <input type="submit" id = "publish" value="Publish" class="btn btn-dark" style="background-color: #330033;">
-                </form>
+            <div class="layer">
+                <h3><div id="finishedTitle"></div></h3>
+                <div id="finishedText" class="entry"></div>
+                <div id= "entry-div">
+                    <h2>Write your memoir: <i class="far fa-edit"></i></h2>
+                    <form method="POST" id= "entry-form">
+                        <input type="text" class="form-control" id="title" placeholder="Memoir title"><br>
+                        <textarea class="form-control" id="text" rows="5" cols="40" style="background: transparent;border: none;border-bottom: 2px solid #660066" placeholder="My day is going..."></textarea><br>
+                        <input type="submit" id = "publish" value="Publish" class="btn btn-dark" style="background-color: #330033;">
+                    </form>
+                </div>
             </div>
         </div>
         <div class="col-3">
+            <!-- Calendar -->
             <div id="calendar" >{{ calendar | safe}}</div>
             <br>
         </div>
     </div>
 </div>
+<br><br>
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <!-- Stocks -->
+            <div class="center"><h2><i class="fas fa-book-open"></i> / <i class="fas fa-calendar-alt"></i></h2>
+                <canvas id="barChart"></canvas>
+
+        </div>
+    </div>
+        <div class="col-6">
+            
+                <!-- Stocks -->
             <h2>Stocks <i class="fas fa-file-invoice"></i></h2>
             <form action="/search-stocks" id="stocksform">
                 <input type="text" id="symbol" placeholder="Search Stock's Symbol" required ><br>
@@ -106,10 +113,6 @@ Dashboard
                 <span id="stockswebsite"></span>
                 <canvas id="stockschart"></canvas>
             </div>
-        </div>
-        <div class="col-6">
-            <div class="center"><h2><i class="fas fa-book-open"></i> / <i class="fas fa-calendar-alt"></i></h2>
-                <canvas id="barChart"></canvas>
             </div>
         </div>
     </div>

@@ -20,16 +20,20 @@ Login
             <h1 class="title"> Log In </h1>
             <br>
             <form action='/check-login' method = 'POST'>
+            <strong>
             Email: <input type="text" name="email"><br>
             Password: <input type="text" name="password"><br><br>
             <input type="submit" value="Log In" class="btn btn-dark" style="background-color: #330033;">
             </form>
+            </strong>
             {% endif %}
         </div>
     </div>
     <div class="col-8">
         
-        <img src="static/img/Journalpen.jpg" style="width:900px;height:550px;">
+        <img class="backimg" src="static/img/Journalpen.jpg" style="opacity: .9;"> 
+            <!-- style="width:900px;height:550px;"> -->
     </div>
 </div>
+<br><br><br><br><br><br><br><br><br><br>
 {% endblock %}

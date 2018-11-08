@@ -4,12 +4,14 @@ footer {
     bottom:0px; 
         }
 body {
-    background: url(/static/img/mintfabric.jpg); 
+    /*background: url(/static/img/mintfabric.jpg); */
     position: relative;                      
     font-family: 'Poppins', sans-serif;
+    font-size: 16px;
 }
 .layer {
-    background-color: rgba(204, 255, 224, 0.7);   
+    border-radius: 9%;
+    background-color: rgba(239, 225, 151, 0.2);   
 }
 tr, td {
     width:40px;
@@ -72,6 +74,25 @@ b{
     text-shadow: -3px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-size: 70px;
 }
+input[type=text], input[type=textarea] {
+    background: transparent; 
+    border: none; 
+    border-bottom: 2px solid #660066;
+}
+/*::placeholder {
+    color: white;
+    opacity: 3;
+}*/
+
+
+
+
+
+
+
+
+
+
 
 
 
