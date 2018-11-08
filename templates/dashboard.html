@@ -5,7 +5,7 @@ Dashboard
 {% endblock %}
 
 {% block body %}
-<img class="backimg" src="static/img/heartbook.jpg" border="0" style="opacity: .7;">
+<img class="backimg" src="static/img/linedpaper.jpg" border="0" style="opacity: .7;">
 <div class="center">
     <br>
     <h1 class="title">{{user.name}}'s Dashboard</h1>
@@ -18,7 +18,7 @@ Dashboard
         <div class="col-3">
             <!-- Quote -->
                 <div style="font-family: 'Merienda', cursive;color:#660066">
-                    <h4>Daily Quote</h4>
+                    <h2>Daily Quote</h2>
                     <p>{{ quote }}</p>
                 </div>
         </div>
@@ -29,7 +29,7 @@ Dashboard
         
         <div class="col-3">
             <!-- Todo List -->
-            <div class="center layer">
+            <div class="center">
                 <h2>To-Do List</h2>
                 <ul id ="todoList">
                 {% for todo in todo_list %}
@@ -51,8 +51,8 @@ Dashboard
         <div class="col-3">
             <!-- Weather -->
                 <div class="center" style="color: #660066;font-family: 'Merienda', cursive;">
-                    <h4>Weather</h4>
-                    <h5>{{ weathers["main"] }}</h5>
+                    <h2>Weather</h2>
+                    <h4>{{ weathers["main"] }}</h4>
                     <img src="{{ img_src }}" id="weather-icon">
                     <p><b>Tempurature:</b><br>
                     Current: {{ weathers["temp"] }}F<br>
@@ -64,14 +64,14 @@ Dashboard
         <div class="col-6 center">
             <!-- Entry -->
             <br>
-            <div class="layer">
+            <div>
                 <h3><div id="finishedTitle"></div></h3>
                 <div id="finishedText" class="entry"></div>
                 <div id= "entry-div">
                     <h2>Write your memoir: <i class="far fa-edit"></i></h2>
                     <form method="POST" id= "entry-form">
-                        <input type="text" class="form-control" id="title" placeholder="Memoir title"><br>
-                        <textarea class="form-control" id="text" rows="5" cols="40" style="background: transparent;border: none;border-bottom: 2px solid #660066" placeholder="My day is going..."></textarea><br>
+                        <input type="text" class="entryform" id="title" placeholder="Memoir title"><br>
+                        <textarea class="entryform" id="text" rows="5" cols="40" placeholder="My day is going..."></textarea><br>
                         <input type="submit" id = "publish" value="Publish" class="btn btn-dark" style="background-color: #330033;">
                     </form>
                 </div>

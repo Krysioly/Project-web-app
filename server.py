@@ -324,7 +324,7 @@ def get_quote():
     """get data for qoute api """
     
     responseQ = requests.get("http://quotes.rest/qod", {"Accept": "application/json"})
-    if responseQ == '200':
+    if responseQ.status_code == 200:
         quote_info = responseQ.json()
         quote = quote_info["contents"]["quotes"][0]["quote"]
     else:

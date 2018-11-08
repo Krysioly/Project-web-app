@@ -1,0 +1,12 @@
+MyMemoirs
+____________________________
+MyMemoirs is a Python flask app for keeping a journal. It has a handy dashboard that shows a random daily quote, weather, calendar, todo list, ability to search the news, and search how your stocks are doing.
+
+Installation
+_____________________________
+Use the package manager pip to install MyMemoirs.
+pip install -r requirments.txt
+
+Usage
+_____________________________
+Quote API by theysaidso.com. News API by newsapi. Weather API by OpenWeatherMaps. 

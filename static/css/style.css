@@ -72,12 +72,19 @@ b{
 }
 .title {
     text-shadow: -3px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    font-size: 70px;
+    font-size: 80px;
 }
-input[type=text], input[type=textarea] {
+input[type=text] {
     background: transparent; 
     border: none; 
     border-bottom: 2px solid #660066;
+}
+.entryform {
+    background: transparent; 
+    border: none; 
+    border-bottom: 2px solid #660066;
+    background-image: url(/static/img/paper.png)
+    opacity:.5;
 }
 /*::placeholder {
     color: white;
